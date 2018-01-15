@@ -1,0 +1,170 @@
+@charset "utf-8";
+/*公共样式*/
+body,div,p,span,strong,h1,h2,h3,h4,h5,h6,hr,a,i,b,input,canvas,colgroup,col,ul,li,dl,dd,dt,img,iframe,label,table,tr,td,select,sup,sub,pre,button{padding:0px; margin: 0px; font: normal 14px "microsoft yahei"; list-style: none; color: #666;}
+li{list-style: none; }
+input[type=text],input[type=password]{list-style: none; outline:none;}
+a,button{text-decoration: none; cursor: pointer; border: none;}
+a:link{color: #464646;}
+a:visited{color: #464646;}
+a:active{color: #464646;}
+a:hover{color: #3d5a97!important;}
+sup{font-size:12px;}
+img{border: 0px;}
+b{font-weight: bold!important;}
+
+.fnclear:after{display:block;clear:both;content:"";visibility:hidden;height:0} 
+.fnclear{zoom:1} 
+.positionri{position: relative;}
+.floatclear:after{display:block;clear:both;content:"";visibility:hidden;height:0} 
+.floatclear{ clear:both; height:0;}
+.noborderR{border-right: none!important;}
+.noborderL{border-left: none!important;}
+.nomarginright{margin-right: 0px!important; margin-bottom: 0px!important;}
+.nobackground{background: none!important;}
+.nopaddingr{padding-right: 0px!important;}
+
+.fnleft{float: left!important;}
+.fnright{float: right!important;}
+
+.fontblue{color: #3d5a97!important;}
+.fontorgin{color: #ff721f;}
+.greenbtn{background: #46A8AC; color: #fff;}
+
+.textallline{border: 1px solid #e5e5e5!important; border-radius: 4px; width: 100%!important;}
+.textline{width: 184px!important; border: 1px solid #e5e5e5!important; border-radius: 4px;}
+
+.noborder{border: none!important;}
+.lineone{border: none; width: 100%; height: 1px ; background: #e5e5e5;}
+
+/*头部*/
+body,html{width: 100%; height: 100%; background: #f2f2f2;}
+#pdheard{width: 100%; height: auto; background: #fff; } 
+.bigheard{height: 110px!important;}
+.pdheard{display: block; width: 1100px; height: 100%; margin: 0 auto; vertical-align: middle; position: relative;}
+#pdheard img{display: block; width: 380px; height: 58px; line-height: 110px; padding-top: 20px;}
+.logindiv{display: inline-block; position: absolute; top: 20px; right: 0px;}
+.logindiv a{display: inline-block; font-size: 16px; color: #ff721f; text-align: right;}
+.pdheard ul{width: 698px; height: auto; margin-top: 38px;}
+.pdheard ul li{display: inline-block; float: left; width: 16%; height: 44px;}
+.pdheard ul li a{display: inline-block; float: left; width: 100%; height: auto; font-size: 16px; line-height: 44px; text-align: center; font-weight: bold;}
+.pdheard ul li a:hover{ border-bottom: 2px solid #3d5a97;  color: #3d5a97;}
+.pdheard ul li.curred a{ border-bottom: 2px solid #3d5a97;  color: #3d5a97;}
+
+.pdheard ul li ul{display: none;}
+.pdheard ul li.curred ul{display: block; position: absolute; top: 46px; left: 0px; width: 70%; margin-left: 20%;}
+.pdheard ul li.curred ul li{display: inline-block; float: left; width: 32%; height: 44px; text-align: center; border: 0px!important;}
+.pdheard ul li.curred ul li a{display: inline-block; float: left; height: 44px; color: #111; font-size: 18px; text-align: center; border: 0px!important; font-weight: bold;}
+.pdheard ul li.curred ul li:hover a{ border: 0px!important; color: #3d5a97}
+.pdheard ul li.curred ul li.cur a{color: #3d5a97}
+.bbheard{height: 146px!important;}
+
+
+/*公共底部*/
+#refooter{display: block; width: 100%; height: 226px; background: #fff; padding:36px 0px; margin-top: 28px;}
+.refooter{display: block; width: 1100px; height: 226px; background: #fff; margin:0 auto;}
+ul.lianjie{width: 100%; height: auto;}
+ul.lianjie li{width: auto; height: auto; color: #666666; text-align: left; text-indent: .5em; float:left;}
+ul.lianjie li:first-child{margin-right: 20px; line-height: 3em;}
+ul.lianjie li a{height: auto; color: #666666; margin-left: 45px; line-height: 3em;}
+
+ul.footert{width: 100%; height: auto;}
+ul.footert li{ display: inline-block; float: left; width: 13%; height: auto; color: #666666; text-align: center; }
+
+ul.footert li a{float: left; height: auto; color: #666666; margin-left: 45px; line-height: 3em;}
+
+.copyrightdiv{width: 100%; height: auto; padding-top: 16px;}
+.copy{width: 30%; height: auto; margin-top: 22px;}
+.copy p{width: 100%; height: auto; font-size: 14px; color: #111; line-height: 1.5em}
+.erweim{width: 40%; height: auto;}
+.erweim img:first-child{margin-left:100px; margin-right: 20px}
+.phonefont{width: 30%; height: auto; margin-top: 42px;}
+.phonefont p{width: 100%; height: auto; font-size: 28px; color: #111; text-align: right;}
+.phonefont p.fwtime{width: 100%; height: auto; font-size: 14px; color: #999;}
+
+
+/*注册内容部分*/
+#regcenter{width: 1100px; height: auto; background: #fff; margin: 0 auto; margin-top: 20px; padding-bottom: 40px;}
+.regcenter{width: 100%;height: auto;}
+.regcenter .regtips{width: 100%; height: auto; line-height: 3em; padding-top: 6px; font-size: 14px; text-align: right;}
+.regcenter .regtips a{margin-right: 142px;}
+.regdiv{width: 306px; height: auto; margin: 0 auto;}
+.regdiv p{width: 100%; height: 48px; margin-bottom:14px; vertical-align: middle;}
+.regdiv p.textallline{width: 100%; height: 48px; margin-bottom:14px; vertical-align: middle;}
+.regdiv p input{display: block; width: 100%; height: 48px; border: none; background: none; line-height: 48px; text-indent: 10px;}
+.regdiv p.textallline input{display: block; width: 100%; height: 48px; border: none; background: none; line-height: 48px;text-indent: 10px;}
+.regdiv p input[name=yanzm]{width: 102px; height: 48px; display: block; background: #e1e1e1; border: 1px solid #e1e1e1; border-radius: 4px; text-align: center; line-height: 50px;font-size: 20px}
+.yzbtn{width: 102px!important; height: 32px!important; display: block; border-left: 1px solid #e1e1e1!important; text-align: center; line-height: 32px!important; margin-top: 8px;}
+.ckbox{display: inline-block; width: 10px; height: 10px; border: 1px solid #3d5a97; margin-top: 4px;}
+.regdiv label{display: inline-block; width: 94%; height: auto; font-size: 14px; color: #999999; line-height: 14px;}
+.regdiv .btnblue{display: block; width: 244px; height: 50px; line-height: 50px; text-align: center; color: #fff; font-size: 20px; background: #3d5a97 ; border-radius: 4px; margin:0 auto; margin-top: 6px; border: none;}
+
+/*登录*/
+.loginc{width: 1100px; height: 430px; background: url(../images/pic06.jpg) left top no-repeat;background-size:100%  100%; position: relative; margin: 0 auto; margin-top: 20px;}
+.logindivc{width: 302px; height: 344px; padding: 18px 24px; background: #FFFFFF; position: absolute; right: 48px; top: 30px; }
+.logindivc p{width: 100%; height: 48px; margin-bottom:14px; vertical-align: middle;}
+.logindivc p.textallline{width: 100%; height: 48px; margin-bottom:14px; vertical-align: middle;}
+.logindivc p input{display: block; width: 100%; height: 48px; border: none; background: none; line-height: 48px; text-indent: 10px;}
+.logindiv p.textallline input{display: block; width: 100%; height: 48px; border: none; background: none; line-height: 48px;text-indent: 10px;}
+.logindivc p span{width: 102px; height: 48px; display: block; background: #e1e1e1; border: 1px solid #e1e1e1; border-radius: 4px; text-align: center; line-height: 50px;font-size: 20px}
+.logindivc div.fnclear{margin-top: 18px;}
+.logindivc label{display: inline-block; width: 94%; height: auto; font-size: 14px; color: #999999; line-height: 14px; }
+.logindivc .btnblue{display: block; width: 244px; height: 50px; line-height: 50px; text-align: center; color: #fff; font-size: 20px; background: #3a84cf; border-radius: 4px; margin:0 auto; margin-top: 10px; border: none}
+.logincz a{font-size: 14px; color: #3d5a97;margin-top: 18px;}
+
+/*找回密码*/
+.forgetp{width: 1064px; height: auto; background: #FFFFFF; margin: 0 auto; padding: 0px 18px 28px 18px; margin-top: 20px;}
+.forgetp .ertitle{width: 100%; font-size: 20px; color: #111; line-height: 54px; border-bottom: 1px solid #E5E5E5; margin-bottom: 20px;}
+
+/*绑定邮箱*/
+.dinginemail{padding-top: 16px;}
+.dinginemail .textallline{position: relative;}
+.dinginemail .textallline .labelemail{position: absolute; left: -50px; display: inline-block; width: auto; height: 50px; line-height: 50px; color: #111; font-size: 14px;}
+
+/*账户设置*/
+.myaccount{width: 1100px; height: auto; background: #fff; margin: 0 auto; margin-top: 20px;}
+.myaccountde{width: 868px; height: auto; padding: 0px 116px;}
+.myaccountde .pline{width: 100%; height: 72px; border-bottom: 1px solid #e5e5e5;}
+.pline span{width: 33%; height: 72px;}
+.pline span.fnleft{line-height: 72px; font-size: 14px; color: #111; text-align: left;}
+.pline span.fncenter{line-height: 72px; font-size: 14px; color: #111; text-align: center;}
+.pline span.fnright{line-height: 72px; font-size: 14px; color: #111; text-align: right;}
+.touz{width: 100%; height: auto; margin-top: 30px;}
+.touz .touzt{font-size:16px; color: #111;}
+.touz .gw{height: 40px;}
+.touz .gw label{display: inline-block; width: 70px; height: 40px; line-height: 40px; font-size: 14px; color: #111;}
+.touz .gw span{ height: 40px; line-height: 40px; font-size: 14px; color: #111;}
+.touz img{margin-left: 30px;}
+/*分页样式*/
+.page{display: block; width: 440px; height: 38px; margin:34px auto;}
+.page span{display: inline-block; height: 38px; padding:0px 20px; font-size: 16px; color: #333;background-color: #fff; border: 1px solid #e5e4e2; margin-right: 14px; float: left; line-height: 38px;}
+.page span:last-child{margin-right: 0px;}
+.page ul{display: inline-block; height: 38px;}
+.page ul li{display: block; width: 36px ;height: 36px; background-color: #fff; border: 1px solid #e5e4e2; margin:0px 5px;}
+.page ul li a{display: block; width: 36px; height: 36px; line-height: 38px; text-align: center;}
+.page ul li.curr{border-color: #3d5a97; color: #3d5a97;}
+.page span.cant{background-color: #e5e4e2; color: #fff; cursor: not-allowed;}
+
+/*表单样式*/
+.item-list-col0{ width: 60px;}
+.item-list-col1{ width: 104px;}
+.item-list-col2{ width: 94px;}
+.item-list-col3{ width: 88px;}
+.item-list-col4{ width: 86px;}
+.item-list-col5{ width: 82px;}
+.item-list-col6{ width: 68px;}
+.item-list-col7{ width: 80px;}
+.item-list-col8{ width: 170px;}
+.item-list-col9{ width: 170px;}
+.item-list-col10{ width: 80px;}
+
+
+
+
+
+
+
+
+
+
+
+

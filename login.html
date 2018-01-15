@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>浦新金服</title>
+		<link rel="stylesheet" href="css/public.css" />
+		<link rel="stylesheet" href="css/allcss.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js" ></script>
+		<script type="text/javascript" src="js/text.js" ></script>
+		<script type="text/javascript">
+
+
+		</script>
+	</head>
+	<body>
+		<!-- 公共头部部分 -->
+		<div id="pdheard" class="bigheard">
+			<div class="pdheard fnclear">
+				<img class="fnleft" src="images/logo.png">
+			</div>
+			
+		</div>
+<!--中间内容-->
+		<div class="regdiv loginc">
+			 	<div class="logindivc">
+				 	<p class="textallline"><input type="text" name="" id="rphone" value="" placeholder="请输入手机号码/邮箱"/></p>
+				 	<p class="textallline"><input type="password" name="" id="rpassword" value="" placeholder="请输入密码"/></p>
+				 	<p ><input class="textline fnleft" type="text" name="ryanz" id="ryanz" placeholder="圆形验证码">
+						<input type="text" name="yanzm"  id="input1"  class="fnright" id="yanzm" value="2345"  readonly=""/></p>
+				 	<div class="fnclear">
+						<input class="ckbox fnleft" type="checkbox" name="shuom" id="shuom"><label class="fnright" for="shuom">我以已阅读并同意《<a class="fontblue" href="xieyi.html" target="_blank">
+						浦新金服网站服务与保密协议</a>》</label>
+						</div>
+					<input id="loginbtn" class="btnblue" type="submit" value="立即登录"/>
+
+					<div class="logincz">
+						<a class="fnleft" href="forgetpd.html">忘记密码</a>
+						<a class="fnright" href="register.html">免费注册</a>
+					</div>
+				 </div>
+			 
+		</div>
+
+		<!-- 底部部分 -->
+		<div id="refooter">
+			<div class="refooter">
+				<ul class="lianjie fnclear">
+					<li>友情链接</li>
+					<li><a href="">中国证监会</a></li>
+					<li><a href="">中国证券业协会</a></li>
+					<li><a href="">中国证券投资基金业协会</a></li>
+					<li><a href="">上海交易所</a></li>
+					<li><a href="">深圳交易所</a></li>
+					<li><a href="">东方财富网</a></li>
+					<li><a href="">同花顺财经</a></li>
+				</ul>
+				<ul class="footert fnclear">
+					<li><a href="">公司介绍</a></li>
+					<li><a href="aboutus.html">关于我们</a></li>
+					<li><a href="">资质证明</a></li>
+					<li><a href="">办公环境</a></li>
+					<li><a href="">联系我们</a></li>
+					<li><a href="">招贤纳士</a></li>
+					<li><a href="">合作伙伴</a></li>
+				</ul>
+				<hr class="lineone">
+
+				<!-- copyright -->
+				<div class="copyrightdiv fnclear">
+					<div class="copy fnleft">
+						<p>Copyright &copy; 2017 浦东金服 版权所有</p>
+						<p>沪ICP备15010975号-4  |  自动化减持专家</p>
+						<p>上海浦东新区张衡路666弄1号楼1F </p>
+					</div>
+					<div class="erweim fnleft">
+						<img src="images/erw01.jpg">
+						<img src="images/erw02.jpg">
+					</div>
+					<div class="phonefont fnright">
+						<p>021-6052-3490</p>
+						<p class="fwtime">服务时间: 9:00-18:00</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<!-- 底部部分end -->
+		
+<!--接口数据调用-->
+<script>
+$("#rphone").blur(function(){
+			var rphone= $("#rphone").val();
+			var regu = /^[1][0-9][0-9]{9}$/; /*判断手机格式是否正确*/
+			var email =/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;/*判断邮箱格式*/
+			var re = new RegExp(regu); 
+			var remail = new RegExp(email);
+			if (re.test(rphone)|| remail.test(rphone)) { 
+			return true; 
+			} else { 
+			alert("手机格式不正确或者邮箱格式不正确"); 
+			} 
+		})
+	$("#rpassword").blur(function(){
+			var rpassword= $("#rpassword").val();
+			if(rpassword==0){
+				alert("请输入密码");
+			}else{
+				return true;
+			}
+			
+		})
+	$("#ryanz").blur(function(){
+			var ryanz= $("#ryanz").val();
+			if(ryanz==0){
+				alert("请输入验证码");
+			}else{
+				return true;
+			}
+			
+		})
+    //tijiao
+    $("#loginbtn").click(function(){
+        if ($("#rphone").val().length!=0 && $("#ryanz").val().length!=0 && $("#rpassword").val().length!=0 && $("#shuom").is(":checked")!=false) {/*$("#rdyanz").val().length!=0 短信接口暂无*/
+            var rphone=$("#rphone").val();
+            var ryanz=$("#ryanz").val();
+//          var rdyanz=$("#rdyanz").val();
+            var rpassword=$("#rpassword").val();
+            var checkboxstat= $("#shuom").is(":checked");/*选中状态，Boolean值，true或false*/
+            $.ajax({
+                type:"get",
+                async:false,
+                url:"http://192.168.1.159:8080/PuxinjinfuWeb//front/add/userLogin",
+                dataType : "jsonp",//数据类型为jsonps
+                jsonp: "jsonpCallback",//服务端用于接收callback调用的function名的参数,
+                data:{
+                    "query.tel":rphone,
+                    "query.code":ryanz,
+//                  "query.email":rdyanz,/*短信验证码接口暂无*/
+                    "query.password":rpassword
+                },
+                success:function(){
+                    window.location.href="index.html";	       
+                }
+            });
+
+        } else {
+            if($("#rphone").val().length==0){
+                alert("请输入手机号码");
+                return
+            }
+            if($("#ryanz").val().length==0){
+                alert("请输入验证码");
+                return
+            }
+//          if($("#rdyanz").val().length==0){
+//              alert("请输入短信验证码");
+//              return
+//          }
+            if($("#rpassword").val().length==0){
+                alert("请输入您的密码")
+
+            }
+            if($("#shuom").is(":checked")==false){
+            	alert("请勾选阅读按钮");
+            	return
+            }
+        }
+
+    });
+</script>
+
+
+
+		<!--<script>
+		$("#loginbtn").click(function(){
+			
+		})
+			$.ajax({
+				type:"get",
+				url:"localhost:8080/PuxinjinfuWeb?head=doc",
+				async:false,
+				dataType.
+			});
+		</script>-->
+		
+	
+	</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>浦新金服</title>
+		<link rel="stylesheet" href="css/public.css" />			
+		<link rel="stylesheet" href="css/allcss.css" />			
+	</head>
+	<body style="background: #;">
+		<!-- 公共头部部分 -->
+		<div id="pdheard" class="bbheard">
+			<div class="pdheard fnclear">
+				<img class="fnleft" src="images/logo.png">
+				<div class="fnright"> 
+					<ul class="fnclear">
+						<li ><a href="index.html">首页</a></li>
+						<li ><a href="timeoffer.html">实时报价</a></li>
+						<li><a href="autoud.html">自动化减持</a></li>
+						<li><a href="dataser.html">数据服务</a></li>
+						<li class="curred"><a href="newlist.html">新闻资讯</a>
+							<ul><li class="cur"><a href="newlist.html">媒体报道</a></li>
+								<li><a href="newlist02.html">公司动态</a></li>
+								<li><a href="newlist03.html">网站公告</a></li>
+							</ul>
+						</li>
+						<li><a href="aboutus.html">关于我们</a></li>
+					</ul>
+				</div>
+				
+				<div class="logindiv">
+						<a class="fontorgin" href="register.html">注册/</a>
+						<a class="fontorgin" href="login.html">登录</a>
+				</div>
+			</div>
+			
+		</div>
+		<!-- 媒体报道内容部分 -->
+		<div class="newdediv">
+			<h2>公司动态公司动态公司动态公司动态</h2>	
+			<p class="datad">2016-01-04<i class="fontblue">浦新金服</i></p>
+			
+			<p>
+
+			</p>
+
+
+			
+			<a class="moreline fontblue fnright" onclick="jQuery:history.go(-1)">返回列表<i><img src="images/ico01.png"></i></a>
+		</div>
+
+		<!-- 底部部分 -->
+		<div id="refooter">
+			<div class="refooter">
+				<ul class="lianjie fnclear">
+					<li>友情链接</li>
+					<li><a href="">中国证监会</a></li>
+					<li><a href="">中国证券业协会</a></li>
+					<li><a href="">中国证券投资基金业协会</a></li>
+					<li><a href="">上海交易所</a></li>
+					<li><a href="">深圳交易所</a></li>
+					<li><a href="">东方财富网</a></li>
+					<li><a href="">同花顺财经</a></li>
+				</ul>
+				<ul class="footert fnclear">
+					<li><a href="">公司介绍</a></li>
+					<li><a href="aboutus.html">关于我们</a></li>
+					<li><a href="">资质证明</a></li>
+					<li><a href="">办公环境</a></li>
+					<li><a href="">联系我们</a></li>
+					<li><a href="">招贤纳士</a></li>
+					<li><a href="">合作伙伴</a></li>
+				</ul>
+				<hr class="lineone">
+
+				<!-- copyright -->
+				<div class="copyrightdiv fnclear">
+					<div class="copy fnleft">
+						<p>Copyright &copy; 2017 浦东金服 版权所有</p>
+						<p>沪ICP备15010975号-4  |  自动化减持专家</p>
+						<p>上海浦东新区张衡路666弄1号楼1F </p>
+					</div>
+					<div class="erweim fnleft">
+						<img src="images/erw01.jpg">
+						<img src="images/erw02.jpg">
+					</div>
+					<div class="phonefont fnright">
+						<p>021-6052-3490</p>
+						<p class="fwtime">服务时间: 9:00-18:00</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<!-- 底部部分end -->
+		
+	<script>
+		$(function(){
+			$.ajax({
+                type:"get",
+                async:false,
+                url:"http://192.168.1.159:8080/PuxinjinfuWeb//front/add/showNews",
+                 dataType : "jsonp",//数据类型为jsonps
+                jsonp: "jsonpCallback",//服务端用于接收callback调用的function名的参数,
+				data:{
+					type:1/*对应显示对应详情页面type = 1 ：代表媒体新闻， 2 ：代表公司新闻， 3 ：代表网站公告*/
+				}
+                success:function(data){
+                	var text="";
+                	var newDate= data.news;
+                    for(var i=0;i<newDate.length;i++){                    	
+							text=text+"<h2>"+newDate.title+"</h2>"+"<p class='datad'>"+newDate.time+"<i class='fontblue'>浦新金服</i></p>";
+			
+                }
+                    $(".newlist").append(text);
+            }
+	});
+		})
+	</script>
+		
+		
+	
+	</body>
+</html>

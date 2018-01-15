@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>浦新金服</title>
+		<link rel="stylesheet" href="css/public.css" />
+		<link rel="stylesheet" href="css/allcss.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js" ></script>
+		<script type="text/javascript" src="js/text.js" ></script>
+	</head>
+	<body>
+		<!-- 公共头部部分 -->
+		<div id="pdheard" class="bigheard">
+			<div class="pdheard fnclear">
+				<img class="fnleft" src="images/logo.png">
+				<div class="fnright"> 
+					<ul class="fnclear">
+						<li ><a href="index.html">首页</a></li>
+						<li ><a href="timeoffer.html">实时报价</a></li>
+						<li><a href="autoud.html">自动化减持</a></li>
+						<li><a href="dataser.html">数据服务</a></li>
+						<li><a href="newlist.html">新闻资讯</a></li>
+						<li><a href="aboutus.html">关于我们</a></li>
+					</ul>
+				</div>
+				
+				<!--<div class="logindiv">
+						<a class="fontorgin" href="register.html">注册/</a>
+						<a class="fontorgin" href="login.html">登录</a>
+				</div>-->
+			</div>
+		</div>
+
+		<!--找回密码-->
+		<div class="forgetp">
+			<h4 class="ertitle">
+				找回密码
+			</h4>
+			<div class="regdiv">
+				<p class="textallline"><input type="text" name="" id="rphone" placeholder="输入手机号码"></p>
+				<p class="textallline"><input class="textline fnleft noborder" type="text" id="ydyanz" name="" placeholder="短信验证码"><input class="yzbtn fontblue fnright" id="ydbtn" type="button" name="" value="发送验证码" /></p>
+				<button id="nextbtn01" class="btnblue">下一步</button>
+			</div>
+		</div>
+
+		<!-- 底部部分 -->
+		<div id="refooter">
+			<div class="refooter">
+				<ul class="lianjie fnclear">
+					<li>友情链接</li>
+					<li><a href="">中国证监会</a></li>
+					<li><a href="">中国证券业协会</a></li>
+					<li><a href="">中国证券投资基金业协会</a></li>
+					<li><a href="">上海交易所</a></li>
+					<li><a href="">深圳交易所</a></li>
+					<li><a href="">东方财富网</a></li>
+					<li><a href="">同花顺财经</a></li>
+				</ul>
+				<ul class="footert fnclear">
+					<li><a href="">公司介绍</a></li>
+					<li><a href="aboutus.html">关于我们</a></li>
+					<li><a href="">资质证明</a></li>
+					<li><a href="">办公环境</a></li>
+					<li><a href="">联系我们</a></li>
+					<li><a href="">招贤纳士</a></li>
+					<li><a href="">合作伙伴</a></li>
+				</ul>
+				<hr class="lineone">
+
+				<!-- copyright -->
+				<div class="copyrightdiv fnclear">
+					<div class="copy fnleft">
+						<p>Copyright &copy; 2017 浦东金服 版权所有</p>
+						<p>沪ICP备15010975号-4  |  自动化减持专家</p>
+						<p>上海浦东新区张衡路666弄1号楼1F </p>
+					</div>
+					<div class="erweim fnleft">
+						<img src="images/erw01.jpg">
+						<img src="images/erw02.jpg">
+					</div>
+					<div class="phonefont fnright">
+						<p>021-6052-3490</p>
+						<p class="fwtime">服务时间: 9:00-18:00</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<!-- 底部部分end -->
+		
+<script>
+	$("#rphone").blur(function(){
+			var rphone= $("#rphone").val();
+			var regu = /^[1][0-9][0-9]{9}$/; /*判断手机格式是否正确*/
+//			var email =/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;/*判断邮箱格式*/
+			var re = new RegExp(regu); 
+//			var remail = new RegExp(email);
+			if (re.test(rphone)) { 
+			return true; 
+			} else { 
+			alert("手机格式不正确") 
+			} 
+		})	
+	$("#ydyanz").blur(function(){
+			var ydyanz= $("#ydyanz").val();
+			if(ydyanz.length==0){
+				alert("请输入验证码");
+			}else{
+				return true;
+			}
+			
+		})
+	
+		var countdown=60; 
+function settime(obj) { 
+    if (countdown == 0) { 
+        obj.removeAttribute("disabled");    
+        obj.value="重新获取验证"; 
+        countdown = 60; 
+        return;
+    } else { 
+        obj.setAttribute("disabled", true); 
+        obj.value="重新发送(" + countdown + ")"; 
+        countdown--; 
+    } 
+setTimeout(function() { 
+    settime(obj) }
+    ,1000) 
+}
+
+	$("#nextbtn01").click(function(){
+		settime(this);
+		var rphone=$("#rphone").val();
+		var rdyanz=$("#ydyanz").val();
+		var rpassword=$("#rpassword").val();
+		        $.ajax({
+                type:"get",
+                async:false,
+                url:"http://192.168.1.159:8080/PuxinjinfuWeb/front/add/sendMsg",
+                 dataType : "jsonp",//数据类型为jsonps
+                jsonp: "jsonpCallback",//服务端用于接收callback调用的function名的参数,
+                data:{
+                  "tel":rphone,
+                    "code":rdyanz,/*短信验证码接口*/
+                    "password":rpassword
+                },
+                success:function(data){                 	
+                	if(data.status==201){
+                		alert("验证码发送成功，请查收！");
+                	}  
+                    window.location.href="index.html";
+                },
+//              error:function(){                	
+//              	alert("1233");
+//              }
+            });
+	})
+	//短信验证码
+//	$("#ydyanz").blur(function(){
+//			var ryanz= $("#ydyanz").val();
+//			var yanz=$("#input1").val();
+//			if(ryanz==yanz){
+//				return true
+//			}else{
+//				alert("验证码输入不正确");
+//			}
+//			
+//		})
+	 
+    //tijiao
+    $("#registerbtn").click(function(){
+    	
+        if ($("#rphone").val().length!=0 && $("#ryanz").val().length!=0 && $("#rpassword").val().length!=0 && $("#shuom").is(":checked")!=false) {/*$("#rdyanz").val().length!=0 短信接口暂无*/
+            var rphone=$("#rphone").val();
+            var ryanz=$("#ryanz").val();
+//          var rdyanz=$("#rdyanz").val();
+            var rpassword=$("#rpassword").val();
+            var checkboxstat= $("#shuom").is(":checked");/*选中状态，Boolean值，true或false*/
+           
+                	
+            $.ajax({
+                type:"get",
+                async:false,
+                url:"http://192.168.1.159:8080/PuxinjinfuWeb/front/add/register",
+                 dataType : "jsonp",//数据类型为jsonps
+                jsonp: "jsonpCallback",//服务端用于接收callback调用的function名的参数,
+                data:{
+                    "tel":rphone,
+                    "code":ryanz,
+//                  "query.email":rdyanz,/*短信验证码接口暂无*/
+                    "password":rpassword
+                },
+                success:function(){                 	
+                		alert("注册成功，浦新金服欢迎您！");
+                		window.location.href="index.html";	                	
+                },
+//              error:function(){                	
+//              	alert("1233");
+//              }
+            });
+
+
+        } else {        	
+            if($("#rphone").val().length==0){
+                alert("请输入手机号码");
+                return
+            }
+            if($("#ryanz").val().length==0){
+                alert("请输入验证码");
+                return
+            }
+//          if($("#rdyanz").val().length==0){
+//              alert("请输入短信验证码");
+//              return
+//          }
+            if($("#rpassword").val().length==0){
+                alert("请输入您的密码");
+				return
+            }
+            if($("#shuom").is(":checked")==false){
+            	alert("请勾选阅读按钮");
+            	return
+            }
+        }
+
+    });
+    
+    
+   
+
+</script>
+		
+		
+	
+	</body>
+</html>
